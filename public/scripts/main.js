@@ -1,2 +1,2 @@
 var name = 'abhi';
-document.write('Hello' + name + '!' );
+document.write('Hello' + name + '!');
