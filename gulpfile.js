@@ -13,10 +13,17 @@ var lessAutoPrefix = new LessAutoPrefix();
 
 var babel = require('gulp-babel');
 
+//Handlebars plugin
+var handlebars = require('gulp-handlebars');
+var handlebarsLib = require('handlebars');
+var declare = require('gulp-declare');
+var wrap = require('gulp-wrap');
+
 //File path
 var DIST_PATH = 'public/dist';
 var SCRIPT_PATH = 'public/scripts/**/*.js';
 var CSS_PATH = 'public/css/**/*.css';
+var TEMPLATES_PATH = 'templates/**/*.hbs';
 
 //style for simple css
 // gulp.task('styles', function() {
@@ -105,11 +112,16 @@ gulp.task('scripts', function() {
         .pipe(livereload());
 });
 
-gulp.task('default', function() {
+gulp.task('templates', function() {
+    // return gulp.src(TEMPLATES_PATH)
+    //     .pipe()
+});
+
+gulp.task('default', ['scripts', 'styles'], function() {
     console.log("gulp default start here");
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['default'], function() {
     console.log('start watch ');
     require('./server.js');
     livereload.listen();
